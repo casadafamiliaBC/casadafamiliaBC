@@ -1,85 +1,98 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa da Família BC — Recepção</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --cf-roxo:#2D1B4E;--cf-roxo2:#3D2460;--cf-laranja:#E8822A;
-  --cf-amarelo:#F5C842;--cf-creme:#FDF6EC;--cf-texto:#1A0F2E;
+  --roxo:#2D1B4E;--roxo2:#3D2460;--laranja:#E8822A;
+  --texto:#1A0F2E;--borda:#E0D8F0;--fundo:#FAF8FE;--branco:#fff;
 }
-body{font-family:var(--font-sans);background:#F5F0FB;min-height:100vh}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-.app{max-width:920px;margin:0 auto;padding:0.75rem}
+body{font-family:system-ui,-apple-system,sans-serif;background:#F5F0FB;min-height:100vh}
 
-.login-wrap{min-height:520px;display:flex;align-items:center;justify-content:center;padding:2rem 1rem}
+/* LOGIN */
+#screen-login{display:block}
+#screen-app{display:none}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:#F5F0FB}
 .login-card{background:#fff;border-radius:20px;border:1px solid rgba(45,27,78,.12);padding:2.5rem 2rem;width:100%;max-width:380px;text-align:center}
-.login-icon{width:72px;height:72px;border-radius:50%;background:var(--cf-roxo);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.login-icon{width:72px;height:72px;border-radius:50%;background:var(--roxo);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
 .login-icon svg{width:32px;height:32px}
-.login-card h2{font-size:18px;font-weight:500;color:var(--cf-roxo);margin-bottom:4px}
-.login-card p{font-size:13px;color:#9B8AB4;margin-bottom:1.75rem}
+.login-card h2{font-size:18px;font-weight:600;color:var(--roxo);margin-bottom:4px}
+.login-card p{font-size:13px;color:#9B8AB4;margin-bottom:1rem}
 .login-badge{display:inline-block;background:#EEEDFE;color:#3C3489;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:1.5rem}
 .lf{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;text-align:left}
 .lf label{font-size:11px;font-weight:500;color:#6B5A8E;text-transform:uppercase;letter-spacing:.05em}
-.lf input{padding:10px 13px;border-radius:10px;border:1.5px solid #E0D8F0;background:#FAF8FE;color:var(--cf-texto);font-size:14px;width:100%;transition:border-color .15s}
-.lf input:focus{outline:none;border-color:var(--cf-roxo)}
-.btn-login{width:100%;padding:11px;border-radius:20px;border:none;background:var(--cf-roxo);color:#fff;font-size:14px;font-weight:500;cursor:pointer;margin-top:8px;transition:background .15s}
-.btn-login:hover{background:var(--cf-roxo2)}
+.lf input{padding:10px 13px;border-radius:10px;border:1.5px solid #E0D8F0;background:#FAF8FE;color:var(--texto);font-size:14px;width:100%;transition:border-color .15s}
+.lf input:focus{outline:none;border-color:var(--roxo)}
+.btn-login{width:100%;padding:11px;border-radius:20px;border:none;background:var(--roxo);color:#fff;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;transition:background .15s}
+.btn-login:hover{background:var(--roxo2)}
 .login-err{background:#FEF0F0;color:#A32D2D;font-size:12px;padding:8px 12px;border-radius:8px;margin-top:10px;display:none;border:1px solid #F7C1C1}
 
-.header{background:var(--cf-roxo);border-radius:16px;padding:1rem 1.25rem;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* APP */
+.app{max-width:920px;margin:0 auto;padding:.75rem}
+.header{background:var(--roxo);border-radius:16px;padding:1rem 1.25rem;margin-bottom:.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .logo-area{display:flex;align-items:center;gap:12px}
-.logo-circle{width:46px;height:46px;border-radius:50%;background:var(--cf-laranja);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-circle{width:46px;height:46px;border-radius:50%;background:var(--laranja);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-circle svg{width:24px;height:24px}
-.logo-text h1{font-size:15px;font-weight:500;color:#fff}
+.logo-text h1{font-size:15px;font-weight:600;color:#fff}
 .logo-text p{font-size:11px;color:rgba(255,255,255,.6);margin-top:1px}
-.logo-badge{background:var(--cf-laranja);color:#fff;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-top:3px;display:inline-block}
-
+.logo-badge{background:var(--laranja);color:#fff;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-top:3px;display:inline-block}
 .user-area{display:flex;align-items:center;gap:8px}
 .user-area label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
 .user-name-input{font-size:13px;padding:7px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;width:160px;transition:border-color .15s}
 .user-name-input:focus{outline:none;border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.2)}
 .user-name-input::placeholder{color:rgba(255,255,255,.5)}
-.btn-sair{font-size:12px;padding:6px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.8);cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-sair{font-size:12px;padding:6px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.8);cursor:pointer;white-space:nowrap}
 .btn-sair:hover{background:rgba(255,255,255,.15);color:#fff}
 
-.tabs{display:flex;gap:6px;margin-bottom:0.75rem}
+.tabs{display:flex;gap:6px;margin-bottom:.75rem}
 .tab{flex:1;padding:9px 8px;font-size:13px;font-weight:500;border:1.5px solid transparent;border-radius:10px;cursor:pointer;background:rgba(45,27,78,.08);color:#4a3570;transition:all .15s;text-align:center}
-.tab.active{background:var(--cf-roxo);color:#fff;border-color:var(--cf-roxo)}
+.tab.active{background:var(--roxo);color:#fff;border-color:var(--roxo)}
 .tab:hover:not(.active){background:rgba(45,27,78,.15)}
 
-.panel{background:#fff;border-radius:14px;border:1px solid rgba(45,27,78,.1);padding:1.25rem;margin-bottom:0.75rem}
-.panel-title{font-size:14px;font-weight:500;color:var(--cf-roxo);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-.panel-title::before{content:'';display:inline-block;width:4px;height:16px;background:var(--cf-laranja);border-radius:2px}
+.panel{background:#fff;border-radius:14px;border:1px solid rgba(45,27,78,.1);padding:1.25rem;margin-bottom:.75rem}
+.panel-title{font-size:14px;font-weight:600;color:var(--roxo);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.panel-title::before{content:'';display:inline-block;width:4px;height:16px;background:var(--laranja);border-radius:2px}
 
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fg{display:flex;flex-direction:column;gap:4px}
 .fg.full{grid-column:1/-1}
 .fg label{font-size:11px;font-weight:500;color:#6B5A8E;text-transform:uppercase;letter-spacing:.05em}
-.fg input,.fg select{padding:9px 12px;border-radius:10px;border:1.5px solid #E0D8F0;background:#FAF8FE;color:var(--cf-texto);font-size:14px;width:100%;transition:border-color .15s}
-.fg input:focus,.fg select:focus{outline:none;border-color:var(--cf-roxo)}
+.fg input,.fg select{padding:9px 12px;border-radius:10px;border:1.5px solid var(--borda);background:var(--fundo);color:var(--texto);font-size:14px;width:100%;transition:border-color .15s}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--roxo)}
+
+/* CAMPO TIPO DE AULA — aparece ao lado */
+.tipo-aula-row{display:none;grid-column:1/-1}
+.tipo-aula-row.visivel{display:flex;gap:10px;align-items:flex-end}
+.tipo-aula-row .fg{flex:1}
+.tipo-aula-hint{font-size:11px;color:#9B8AB4;margin-top:3px}
 
 .btn-row{margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap}
-.btn{padding:9px 18px;border-radius:20px;border:1.5px solid #D0C8E8;font-size:13px;font-weight:500;cursor:pointer;background:#fff;color:var(--cf-roxo);transition:all .15s}
+.btn{padding:9px 18px;border-radius:20px;border:1.5px solid #D0C8E8;font-size:13px;font-weight:500;cursor:pointer;background:#fff;color:var(--roxo);transition:all .15s}
 .btn:hover{background:#F0EBF8}
-.btn.prim{background:var(--cf-roxo);color:#fff;border-color:var(--cf-roxo)}
-.btn.prim:hover{background:var(--cf-roxo2)}
+.btn.prim{background:var(--roxo);color:#fff;border-color:var(--roxo)}
+.btn.prim:hover{background:var(--roxo2)}
 
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:0.75rem}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:.75rem}
 .mc{border-radius:12px;padding:14px 12px;text-align:center}
-.mc.total{background:var(--cf-roxo);color:#fff}
+.mc.total{background:var(--roxo);color:#fff}
 .mc.manha{background:#FEF3E2;color:#633806}
 .mc.tarde{background:#FDF6EC;color:#4A1B0C}
 .mc.livre{background:#E1F5EE;color:#085041}
 .mc.atend{background:#EEEDFE;color:#26215C}
-.mc .n{font-size:28px;font-weight:500;line-height:1}
+.mc .n{font-size:28px;font-weight:600;line-height:1}
 .mc .l{font-size:11px;margin-top:4px;opacity:.8;font-weight:500}
 
-.search-row{display:flex;gap:8px;margin-bottom:0.75rem}
-.search-row input{flex:1;padding:9px 12px;border-radius:20px;border:1.5px solid #E0D8F0;background:#FAF8FE;color:var(--cf-texto);font-size:13px}
-.search-row input:focus{outline:none;border-color:var(--cf-roxo)}
+.search-row{display:flex;gap:8px;margin-bottom:.75rem}
+.search-row input{flex:1;padding:9px 12px;border-radius:20px;border:1.5px solid var(--borda);background:var(--fundo);color:var(--texto);font-size:13px}
+.search-row input:focus{outline:none;border-color:var(--roxo)}
 
 .tbl-wrap{border-radius:10px;overflow:hidden;border:1px solid #EDE8F5;overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:580px}
 th{padding:8px 12px;background:#F7F3FE;color:#6B5A8E;font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;text-align:left;border-bottom:1px solid #EDE8F5}
-td{padding:8px 12px;border-bottom:1px solid #F2EEF8;color:var(--cf-texto)}
+td{padding:8px 12px;border-bottom:1px solid #F2EEF8;color:var(--texto)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:#FAF8FE}
 
@@ -90,35 +103,69 @@ tr:hover td{background:#FAF8FE}
 .b-global{background:#FAEEDA;color:#633806}
 .b-ludoterapia{background:#EEEDFE;color:#26215C}
 .b-sala{background:#EAF3DE;color:#27500A}
+.b-cidadania{background:#E6F1FB;color:#042C53}
+.b-cadastro_unico{background:#F1EFE8;color:#2C2C2A}
 .b-manha{background:#FEF3E2;color:#633806}
 .b-tarde{background:#FAF0FE;color:#3C3489}
+.b-custom{background:#F1EFE8;color:#444441}
 
 .rep-sec{margin-bottom:1.25rem}
 .rep-sec h3{font-size:10px;font-weight:500;color:#9B8AB4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid #F0EBF8}
-.rep-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F7F4FC;font-size:13px;color:var(--cf-texto)}
+.rep-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F7F4FC;font-size:13px;color:var(--texto)}
 .rep-row:last-child{border-bottom:none}
-.rep-val{font-weight:500;color:var(--cf-roxo);min-width:24px;text-align:right}
+.rep-val{font-weight:500;color:var(--roxo);min-width:28px;text-align:right}
 .bar-w{flex:1;margin:0 12px;height:6px;border-radius:3px;background:#EDE8F5}
-.bar-f{height:6px;border-radius:3px;background:var(--cf-laranja)}
-.rep-header{background:var(--cf-roxo);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.bar-f{height:6px;border-radius:3px;background:var(--laranja)}
+.rep-header{background:var(--roxo);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .rep-header .data{font-size:12px;color:rgba(255,255,255,.7);margin-top:2px}
-.rep-header .titulo{font-size:15px;font-weight:500}
+.rep-header .titulo{font-size:15px;font-weight:600}
 .btn-exp{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer}
 .btn-exp:hover{background:rgba(255,255,255,.25)}
 
+/* sub-lista de aulas em sala no relatório */
+.sub-list{margin-top:4px;padding-left:0}
+.sub-list li{list-style:none;font-size:12px;color:#6B5A8E;padding:3px 0 3px 12px;border-left:2px solid #EAF3DE;margin-bottom:2px;display:flex;justify-content:space-between}
+.sub-list li span{font-weight:500;color:#27500A}
+
 .empty{text-align:center;padding:2rem;color:#9B8AB4;font-size:14px}
-.toast{position:fixed;bottom:16px;right:16px;background:var(--cf-roxo);color:#fff;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;display:none;z-index:9999;border:1.5px solid rgba(255,255,255,.2)}
+.toast{position:fixed;bottom:16px;right:16px;background:var(--roxo);color:#fff;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;display:none;z-index:9999;border:1.5px solid rgba(255,255,255,.2)}
 .page{display:none}
 .page.active{display:block}
 .rm-btn{padding:3px 10px;border-radius:20px;border:1px solid #F7C1C1;background:#FEF0F0;color:#A32D2D;font-size:11px;cursor:pointer}
 .rm-btn:hover{background:#FCEBEB}
 
-#screen-login{display:block}
-#screen-app{display:none}
+/* CAMPO HÍBRIDO DE TIPO */
+.tipo-wrap{position:relative;width:100%}
+.tipo-display{padding:9px 36px 9px 12px;border-radius:10px;border:1.5px solid var(--borda);background:var(--fundo);color:var(--texto);font-size:14px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:40px;transition:border-color .15s}
+.tipo-display:hover{border-color:#9B8AB4}
+.tipo-display.open{border-color:var(--roxo)}
+.tipo-display-text{flex:1;color:var(--texto)}
+.tipo-display-text.placeholder{color:#aaa}
+.tipo-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:10px;color:#9B8AB4;pointer-events:none;transition:transform .2s}
+.tipo-display.open .tipo-arrow{transform:translateY(-50%) rotate(180deg)}
+.tipo-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid var(--roxo);border-radius:12px;z-index:100;overflow:hidden;box-shadow:0 8px 24px rgba(45,27,78,.12)}
+.tipo-dropdown.open{display:block}
+.tipo-search-wrap{padding:8px 10px;border-bottom:1px solid #F0EBF8}
+.tipo-search{width:100%;padding:7px 10px;border-radius:8px;border:1px solid var(--borda);background:var(--fundo);font-size:13px;color:var(--texto);outline:none}
+.tipo-search:focus{border-color:var(--roxo)}
+.tipo-opts{max-height:200px;overflow-y:auto}
+.tipo-opt{padding:9px 14px;font-size:13px;cursor:pointer;color:var(--texto);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tipo-opt:hover{background:#F5F0FB}
+.tipo-opt.selected{background:#EEEDFE;color:var(--roxo);font-weight:500}
+.tipo-opt.custom-opt{color:#6B5A8E}
+.tipo-opt .del-opt{font-size:11px;color:#F0997B;padding:1px 5px;border-radius:6px;display:none;cursor:pointer}
+.tipo-opt:hover .del-opt{display:inline}
+.tipo-add-row{padding:8px 10px;border-top:1px solid #F0EBF8;display:flex;gap:6px}
+.tipo-add-input{flex:1;padding:7px 10px;border-radius:8px;border:1px solid var(--borda);background:var(--fundo);font-size:13px;color:var(--texto);outline:none}
+.tipo-add-input:focus{border-color:var(--roxo)}
+.tipo-add-btn{padding:7px 12px;border-radius:8px;border:none;background:var(--roxo);color:#fff;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.tipo-add-btn:hover{background:var(--roxo2)}
+.tipo-add-hint{font-size:11px;color:#9B8AB4;padding:0 14px 8px;font-style:italic}
 </style>
+</head>
+<body>
 
-<h2 class="sr-only">Sistema de recepção da Casa da Família BC</h2>
-
+<!-- LOGIN -->
 <div id="screen-login">
   <div class="login-wrap">
     <div class="login-card">
@@ -140,12 +187,13 @@ tr:hover td{background:#FAF8FE}
         <input type="password" id="login-pass" placeholder="••••••" autocomplete="current-password">
       </div>
       <button class="btn-login" onclick="fazerLogin()">Entrar</button>
-      <div class="login-err" id="login-err">Usuário ou senha incorretos. Tente novamente.</div>
+      <div class="login-err" id="login-err">Usuário ou senha incorretos.</div>
     </div>
   </div>
 </div>
 
-<div id="screen-app" style="display:none">
+<!-- APP -->
+<div id="screen-app">
   <div class="app">
     <div class="header">
       <div class="logo-area">
@@ -174,6 +222,7 @@ tr:hover td{background:#FAF8FE}
       <button class="tab" onclick="showPage('relatorio',this)">Relatório do dia</button>
     </div>
 
+    <!-- CADASTRO -->
     <div id="page-cadastro" class="page active">
       <div class="panel">
         <div class="panel-title">Registrar atendimento</div>
@@ -192,19 +241,37 @@ tr:hover td{background:#FAF8FE}
           </div>
           <div class="fg">
             <label>Tipo de atendimento *</label>
-            <select id="tipo">
-              <option value="">Selecione...</option>
-              <option value="aula_livre">Aula livre</option>
-              <option value="abraco">Atendimento — Abraço</option>
-              <option value="protecao">Atendimento — Proteção</option>
-              <option value="global">Atendimento — Global</option>
-              <option value="ludoterapia">Atendimento — Ludoterapia</option>
-              <option value="sala">Aula em sala</option>
-            </select>
+            <div class="tipo-wrap" id="tipo-wrap">
+              <div class="tipo-display" id="tipo-display" onclick="toggleTipoDropdown()">
+                <span class="tipo-display-text placeholder" id="tipo-display-text">Selecione ou digite...</span>
+                <span class="tipo-arrow">&#9660;</span>
+              </div>
+              <div class="tipo-dropdown" id="tipo-dropdown">
+                <div class="tipo-search-wrap">
+                  <input class="tipo-search" id="tipo-search" placeholder="Buscar ou digitar novo tipo..." oninput="filtrarOpcoes()" onkeydown="tipoSearchKey(event)">
+                </div>
+                <div class="tipo-opts" id="tipo-opts"></div>
+                <div class="tipo-add-hint">Nao encontrou? Adicione um novo tipo abaixo</div>
+                <div class="tipo-add-row">
+                  <input class="tipo-add-input" id="tipo-add-input" placeholder="Nome do novo tipo...">
+                  <button class="tipo-add-btn" onclick="adicionarTipoCustom()">+ Adicionar</button>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" id="tipo" value="">
           </div>
           <div class="fg">
             <label>Horário de chegada</label>
             <input type="time" id="horario">
+          </div>
+
+          <!-- campo que aparece só quando "Aula em sala" é selecionado -->
+          <div class="tipo-aula-row" id="tipo-aula-row">
+            <div class="fg">
+              <label>Qual aula em sala? *</label>
+              <input type="text" id="tipo-aula" placeholder="Ex: Yoga, Pilates, Dança, Pintura...">
+              <span class="tipo-aula-hint">Descreva o tipo de aula que será realizada</span>
+            </div>
           </div>
         </div>
         <div class="btn-row">
@@ -215,6 +282,7 @@ tr:hover td{background:#FAF8FE}
       <div id="metricas-hj"></div>
     </div>
 
+    <!-- LISTA -->
     <div id="page-lista" class="page">
       <div class="search-row">
         <input type="text" id="busca" placeholder="Buscar por nome ou CPF..." oninput="renderLista()">
@@ -224,6 +292,7 @@ tr:hover td{background:#FAF8FE}
       </div>
     </div>
 
+    <!-- RELATÓRIO -->
     <div id="page-relatorio" class="page">
       <div class="panel">
         <div id="relatorio-body"><div class="empty">Nenhum dado disponível.</div></div>
@@ -235,12 +304,13 @@ tr:hover td{background:#FAF8FE}
 <div class="toast" id="toast"></div>
 
 <script>
-const KEY='cfbc_v2';
+const KEY='cfbc_v3';
 let dados=[];
 
 function hoje(){return new Date().toISOString().slice(0,10)}
 function hojeFormatado(){return new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
 
+/* LOGIN */
 function fazerLogin(){
   const u=document.getElementById('login-user').value.trim();
   const p=document.getElementById('login-pass').value;
@@ -250,19 +320,14 @@ function fazerLogin(){
     document.getElementById('screen-login').style.display='none';
     document.getElementById('screen-app').style.display='block';
     document.getElementById('nomeRecep').focus();
-    load();
+    carregarDados();
   } else {
     err.style.display='block';
     document.getElementById('login-pass').value='';
   }
 }
-
-document.getElementById('login-pass').addEventListener('keydown',function(e){
-  if(e.key==='Enter') fazerLogin();
-});
-document.getElementById('login-user').addEventListener('keydown',function(e){
-  if(e.key==='Enter') document.getElementById('login-pass').focus();
-});
+document.getElementById('login-pass').addEventListener('keydown',e=>{if(e.key==='Enter')fazerLogin()});
+document.getElementById('login-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('login-pass').focus()});
 
 function sair(){
   if(!confirm('Deseja sair do sistema?'))return;
@@ -273,16 +338,35 @@ function sair(){
   document.getElementById('nomeRecep').value='';
 }
 
-async function load(){
-  try{const r=await window.storage.get(KEY,true);if(r&&r.value)dados=JSON.parse(r.value);}catch(e){dados=[];}
+/* STORAGE — usa localStorage como fallback quando fora do Claude */
+async function carregarDados(){
+  carregarTiposCustom();
+  try{
+    if(window.storage){
+      const r=await window.storage.get(KEY,true);
+      if(r&&r.value) dados=JSON.parse(r.value);
+    } else {
+      const s=localStorage.getItem(KEY);
+      if(s) dados=JSON.parse(s);
+    }
+  }catch(e){
+    try{const s=localStorage.getItem(KEY);if(s)dados=JSON.parse(s);}catch(e2){dados=[];}
+  }
   render();
 }
-async function save(){
-  try{await window.storage.set(KEY,JSON.stringify(dados),true);}catch(e){}
+async function salvarDados(){
+  const str=JSON.stringify(dados);
+  try{
+    if(window.storage) await window.storage.set(KEY,str,true);
+    else localStorage.setItem(KEY,str);
+  }catch(e){
+    try{localStorage.setItem(KEY,str);}catch(e2){}
+  }
 }
 
 function dHoje(){return dados.filter(d=>d.data===hoje())}
 
+/* MASKS */
 function maskCPF(v){
   v=v.replace(/\D/g,'');
   if(v.length<=3)return v;
@@ -304,6 +388,140 @@ function setHora(){
   document.getElementById('horario').value=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
 }
 
+/* TIPOS — fixos + custom salvos em localStorage */
+const TIPOS_FIXOS=[
+  {v:'aula_livre',l:'Aula livre'},
+  {v:'abraco',l:'Atendimento — Abraço'},
+  {v:'protecao',l:'Atendimento — Proteção'},
+  {v:'global',l:'Atendimento — Global'},
+  {v:'ludoterapia',l:'Atendimento — Ludoterapia'},
+  {v:'sala',l:'Aula em sala'},
+  {v:'cidadania',l:'Casa da Cidadania'},
+  {v:'cadastro_unico',l:'Cadastro Único'}
+];
+let tiposCustom=[];
+const KEY_TIPOS='cfbc_tipos_custom';
+
+function carregarTiposCustom(){
+  try{const s=localStorage.getItem(KEY_TIPOS);if(s)tiposCustom=JSON.parse(s);}catch(e){tiposCustom=[];}
+}
+function salvarTiposCustom(){
+  try{localStorage.setItem(KEY_TIPOS,JSON.stringify(tiposCustom));}catch(e){}
+}
+function getTodosOsTipos(){
+  return [...TIPOS_FIXOS,...tiposCustom.map(l=>({v:'custom_'+l.replace(/\s+/g,'_').toLowerCase(),l,custom:true}))];
+}
+
+let tipoValorSelecionado='';
+let tipoLabelSelecionado='';
+
+function renderOpcoes(filtro=''){
+  const lista=getTodosOsTipos().filter(t=>!filtro||t.l.toLowerCase().includes(filtro.toLowerCase()));
+  const el=document.getElementById('tipo-opts');
+  if(!lista.length){
+    el.innerHTML='<div style="padding:10px 14px;font-size:13px;color:#9B8AB4">Nenhum tipo encontrado</div>';
+    return;
+  }
+  el.innerHTML=lista.map(t=>`
+    <div class="tipo-opt${t.v===tipoValorSelecionado?' selected':''}${t.custom?' custom-opt':''}"
+         onclick="selecionarTipo('${t.v}','${t.l.replace(/'/g,"\'")}')">
+      <span>${t.l}${t.custom?' <span style=\'font-size:10px;color:#9B8AB4\'>(personalizado)</span>':''}</span>
+      ${t.custom?`<span class="del-opt" onclick="removerTipoCustom(event,'${t.l.replace(/'/g,"\'")}')">&#10005;</span>`:''}
+    </div>`).join('');
+}
+
+function toggleTipoDropdown(){
+  const dd=document.getElementById('tipo-dropdown');
+  const disp=document.getElementById('tipo-display');
+  const isOpen=dd.classList.contains('open');
+  if(isOpen){fecharTipoDropdown();return;}
+  dd.classList.add('open');
+  disp.classList.add('open');
+  renderOpcoes();
+  setTimeout(()=>document.getElementById('tipo-search').focus(),50);
+}
+
+function fecharTipoDropdown(){
+  document.getElementById('tipo-dropdown').classList.remove('open');
+  document.getElementById('tipo-display').classList.remove('open');
+  document.getElementById('tipo-search').value='';
+  document.getElementById('tipo-add-input').value='';
+}
+
+document.addEventListener('click',function(e){
+  if(!document.getElementById('tipo-wrap').contains(e.target)) fecharTipoDropdown();
+});
+
+function selecionarTipo(val,label){
+  tipoValorSelecionado=val;
+  tipoLabelSelecionado=label;
+  document.getElementById('tipo').value=val;
+  const txt=document.getElementById('tipo-display-text');
+  txt.textContent=label;
+  txt.classList.remove('placeholder');
+  fecharTipoDropdown();
+  verificaTipoAula();
+}
+
+function filtrarOpcoes(){
+  renderOpcoes(document.getElementById('tipo-search').value);
+}
+
+function tipoSearchKey(e){
+  if(e.key==='Enter'){
+    const filtro=document.getElementById('tipo-search').value.trim();
+    const lista=getTodosOsTipos().filter(t=>t.l.toLowerCase().includes(filtro.toLowerCase()));
+    if(lista.length===1){selecionarTipo(lista[0].v,lista[0].l);}
+    else if(filtro){
+      document.getElementById('tipo-add-input').value=filtro;
+      document.getElementById('tipo-add-input').focus();
+    }
+  }
+}
+
+function adicionarTipoCustom(){
+  const input=document.getElementById('tipo-add-input');
+  const nome=input.value.trim();
+  if(!nome){toast('⚠ Digite o nome do novo tipo');return;}
+  const jaExiste=getTodosOsTipos().some(t=>t.l.toLowerCase()===nome.toLowerCase());
+  if(jaExiste){toast('Esse tipo já existe na lista');return;}
+  tiposCustom.push(nome);
+  salvarTiposCustom();
+  input.value='';
+  selecionarTipo('custom_'+nome.replace(/\s+/g,'_').toLowerCase(),nome);
+  toast('✓ Tipo "'+nome+'" adicionado!');
+}
+
+function removerTipoCustom(e,label){
+  e.stopPropagation();
+  if(!confirm('Remover o tipo "'+label+'" da lista?'))return;
+  tiposCustom=tiposCustom.filter(t=>t!==label);
+  salvarTiposCustom();
+  if(tipoLabelSelecionado===label){
+    tipoValorSelecionado='';tipoLabelSelecionado='';
+    document.getElementById('tipo').value='';
+    const txt=document.getElementById('tipo-display-text');
+    txt.textContent='Selecione ou digite...';
+    txt.classList.add('placeholder');
+  }
+  renderOpcoes(document.getElementById('tipo-search').value);
+  toast('Tipo removido');
+}
+
+/* MOSTRAR/OCULTAR campo tipo de aula */
+function verificaTipoAula(){
+  const tipo=document.getElementById('tipo').value;
+  const row=document.getElementById('tipo-aula-row');
+  const input=document.getElementById('tipo-aula');
+  if(tipo==='sala'){
+    row.classList.add('visivel');
+    input.focus();
+  } else {
+    row.classList.remove('visivel');
+    input.value='';
+  }
+}
+
 function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.style.display='block';
@@ -311,11 +529,17 @@ function toast(msg){
 }
 
 function tipoLabel(t){
-  return{aula_livre:'Aula livre',abraco:'Abraço',protecao:'Proteção',global:'Global',ludoterapia:'Ludoterapia',sala:'Aula em sala'}[t]||t;
+  const mapa={aula_livre:'Aula livre',abraco:'Abraço',protecao:'Proteção',global:'Global',ludoterapia:'Ludoterapia',sala:'Aula em sala',cidadania:'Casa da Cidadania',cadastro_unico:'Cadastro Único'};
+  if(mapa[t]) return mapa[t];
+  const custom=tiposCustom.find(c=>'custom_'+c.replace(/\s+/g,'_').toLowerCase()===t);
+  if(custom) return custom;
+  return t;
 }
-function tipoBadge(t){
-  const cls={aula_livre:'b-aula',abraco:'b-abraco',protecao:'b-protecao',global:'b-global',ludoterapia:'b-ludoterapia',sala:'b-sala'};
-  return`<span class="badge ${cls[t]||''}">${tipoLabel(t)}</span>`;
+function tipoBadge(t,tipoAula){
+  const cls={aula_livre:'b-aula',abraco:'b-abraco',protecao:'b-protecao',global:'b-global',ludoterapia:'b-ludoterapia',sala:'b-sala',cidadania:'b-cidadania',cadastro_unico:'b-cadastro_unico'};
+  const label=t==='sala'&&tipoAula ? 'Sala — '+tipoAula : tipoLabel(t);
+  const badgeCls=cls[t]||'b-custom';
+  return`<span class="badge ${badgeCls}">${label}</span>`;
 }
 function periodo(h){
   if(!h)return'—';
@@ -326,37 +550,53 @@ function perioBadge(h){
   return`<span class="badge ${p==='manhã'?'b-manha':'b-tarde'}">${p}</span>`;
 }
 
+/* CADASTRAR */
 function cadastrar(){
   const user=document.getElementById('nomeRecep').value.trim();
-  if(!user){toast('⚠ Digite seu nome de recepcionista antes');document.getElementById('nomeRecep').focus();return;}
+  if(!user){toast('⚠ Digite seu nome de recepcionista');document.getElementById('nomeRecep').focus();return;}
   const nome=document.getElementById('nome').value.trim();
   if(!nome){toast('⚠ Nome da pessoa é obrigatório');return;}
   const tipo=document.getElementById('tipo').value;
   if(!tipo){toast('⚠ Selecione o tipo de atendimento');return;}
+  const tipoAula=document.getElementById('tipo-aula').value.trim();
+  if(tipo==='sala'&&!tipoAula){toast('⚠ Informe qual aula será realizada');document.getElementById('tipo-aula').focus();return;}
   const cpf=document.getElementById('cpf').value.trim();
   const tel=document.getElementById('tel').value.trim();
   const horario=document.getElementById('horario').value||new Date().toTimeString().slice(0,5);
-  dados.push({id:Date.now(),data:hoje(),horario,nome,cpf:cpf||'—',tel:tel||'—',tipo,usuario:user});
-  save();render();limparForm();
+  dados.push({
+    id:Date.now(),data:hoje(),horario,nome,
+    cpf:cpf||'—',tel:tel||'—',
+    tipo,tipoAula:tipo==='sala'?tipoAula:'',
+    usuario:user
+  });
+  salvarDados();render();limparForm();
   toast('✓ Atendimento registrado!');
 }
 
 function limparForm(){
-  ['nome','cpf','tel'].forEach(id=>document.getElementById(id).value='');
+  ['nome','cpf','tel','tipo-aula'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('tipo').value='';
+  tipoValorSelecionado='';tipoLabelSelecionado='';
+  const txt=document.getElementById('tipo-display-text');
+  txt.textContent='Selecione ou digite...';
+  txt.classList.add('placeholder');
+  document.getElementById('tipo-aula-row').classList.remove('visivel');
   setHora();
 }
 
 function excluir(id){
   if(!confirm('Remover este registro?'))return;
   dados=dados.filter(d=>d.id!==id);
-  save();render();toast('Registro removido');
+  salvarDados();render();toast('Registro removido');
 }
 
+/* MÉTRICAS */
 function renderMetricas(){
   const dh=dHoje();
-  const t=dh.length,mn=dh.filter(d=>periodo(d.horario)==='manhã').length,
-        ta=t-mn,al=dh.filter(d=>d.tipo==='aula_livre').length,
+  const t=dh.length,
+        mn=dh.filter(d=>periodo(d.horario)==='manhã').length,
+        ta=t-mn,
+        al=dh.filter(d=>d.tipo==='aula_livre').length,
         at=dh.filter(d=>['abraco','protecao','global','ludoterapia'].includes(d.tipo)).length;
   document.getElementById('metricas-hj').innerHTML=`
     <div class="metrics">
@@ -368,6 +608,7 @@ function renderMetricas(){
     </div>`;
 }
 
+/* LISTA */
 function renderLista(){
   const busca=(document.getElementById('busca')||{}).value||'';
   const dh=dHoje().filter(d=>
@@ -376,13 +617,16 @@ function renderLista(){
   const w=document.getElementById('tbl');
   if(!dh.length){w.innerHTML='<div class="empty">Nenhum atendimento encontrado.</div>';return;}
   w.innerHTML=`<table>
-    <thead><tr><th>Hora</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Tipo</th><th>Turno</th><th>Recep.</th><th></th></tr></thead>
+    <thead><tr>
+      <th>Hora</th><th>Nome</th><th>CPF</th><th>Telefone</th>
+      <th>Tipo / Aula</th><th>Turno</th><th>Recep.</th><th></th>
+    </tr></thead>
     <tbody>${dh.map(d=>`<tr>
-      <td style="font-weight:500">${d.horario}</td>
+      <td style="font-weight:600">${d.horario}</td>
       <td>${d.nome}</td>
-      <td style="font-family:var(--font-mono);font-size:11px;color:#6B5A8E">${d.cpf}</td>
+      <td style="font-family:monospace;font-size:11px;color:#6B5A8E">${d.cpf}</td>
       <td style="font-size:12px">${d.tel}</td>
-      <td>${tipoBadge(d.tipo)}</td>
+      <td>${tipoBadge(d.tipo,d.tipoAula)}</td>
       <td>${perioBadge(d.horario)}</td>
       <td style="font-size:12px;color:#9B8AB4">${d.usuario}</td>
       <td><button class="rm-btn" onclick="excluir(${d.id})">Remover</button></td>
@@ -390,76 +634,119 @@ function renderLista(){
   </table>`;
 }
 
+/* RELATÓRIO */
 function renderRelatorio(){
   const dh=dHoje();
   const el=document.getElementById('relatorio-body');
   if(!dh.length){el.innerHTML='<div class="empty">Nenhum atendimento registrado hoje.</div>';return;}
-  const t=dh.length,mn=dh.filter(d=>periodo(d.horario)==='manhã').length,ta=t-mn;
-  const tipos=['aula_livre','abraco','protecao','global','ludoterapia','sala'];
+  const t=dh.length,
+        mn=dh.filter(d=>periodo(d.horario)==='manhã').length,
+        ta=t-mn;
+  const tipos=[...TIPOS_FIXOS.map(t=>t.v),...tiposCustom.map(c=>'custom_'+c.replace(/\s+/g,'_').toLowerCase())].filter(tp=>dh.some(d=>d.tipo===tp));
   const usuarios=[...new Set(dh.map(d=>d.usuario))];
 
-  function rows(arr,keyFn,badgeFn){
-    return arr.map(k=>{
-      const n=dh.filter(d=>keyFn(d)===k).length;
-      const p=t>0?Math.round(n/t*100):0;
-      return`<div class="rep-row">
-        <span>${badgeFn(k)}</span>
-        <div class="bar-w"><div class="bar-f" style="width:${p}%"></div></div>
-        <span class="rep-val">${n}</span>
-      </div>`;
-    }).join('');
+  /* agrupa tipos de aula em sala */
+  const aulasEmSala=dh.filter(d=>d.tipo==='sala'&&d.tipoAula);
+  const contAulas={};
+  aulasEmSala.forEach(d=>{
+    const k=d.tipoAula.trim();
+    contAulas[k]=(contAulas[k]||0)+1;
+  });
+  const subListaSala=Object.entries(contAulas).sort((a,b)=>b[1]-a[1]);
+
+  function barRow(label,n,total,badgeFn){
+    const p=total>0?Math.round(n/total*100):0;
+    return`<div class="rep-row">
+      <span>${badgeFn?badgeFn():label}</span>
+      <div class="bar-w"><div class="bar-f" style="width:${p}%"></div></div>
+      <span class="rep-val">${n}</span>
+    </div>`;
   }
 
   el.innerHTML=`
     <div class="rep-header">
-      <div><div class="titulo">Relatório de presença</div><div class="data">${hojeFormatado()}</div></div>
+      <div>
+        <div class="titulo">Relatório de presença</div>
+        <div class="data">${hojeFormatado()}</div>
+      </div>
       <button class="btn-exp" onclick="exportar()">Exportar .txt</button>
     </div>
+
     <div class="rep-sec">
       <h3>Totais gerais</h3>
-      <div class="rep-row"><span>Total de pessoas atendidas</span><div class="bar-w"><div class="bar-f" style="width:100%"></div></div><span class="rep-val">${t}</span></div>
-      <div class="rep-row"><span><span class="badge b-manha">manhã</span> 7h às 13h</span><div class="bar-w"><div class="bar-f" style="width:${t>0?Math.round(mn/t*100):0}%"></div></div><span class="rep-val">${mn}</span></div>
-      <div class="rep-row"><span><span class="badge b-tarde">tarde</span> 13h às 18h</span><div class="bar-w"><div class="bar-f" style="width:${t>0?Math.round(ta/t*100):0}%"></div></div><span class="rep-val">${ta}</span></div>
+      ${barRow('Total',t,t)}
+      ${barRow('',mn,t,()=>`<span class="badge b-manha">manhã</span> 7h às 13h`)}
+      ${barRow('',ta,t,()=>`<span class="badge b-tarde">tarde</span> 13h às 18h`)}
     </div>
+
     <div class="rep-sec">
       <h3>Por tipo de atendimento</h3>
-      ${rows(tipos,d=>d.tipo,k=>tipoBadge(k))}
+      ${tipos.map(tp=>{
+        const n=dh.filter(d=>d.tipo===tp).length;
+        const p=t>0?Math.round(n/t*100):0;
+        return`<div class="rep-row">
+          <span>${tipoBadge(tp)}</span>
+          <div class="bar-w"><div class="bar-f" style="width:${p}%"></div></div>
+          <span class="rep-val">${n}</span>
+        </div>`+
+        (tp==='sala'&&subListaSala.length?
+          `<ul class="sub-list">${subListaSala.map(([nome,qtd])=>
+            `<li>${nome}<span>${qtd} pessoa${qtd>1?'s':''}</span></li>`
+          ).join('')}</ul>`
+        :'');
+      }).join('')}
     </div>
+
     <div class="rep-sec">
       <h3>Por recepcionista</h3>
-      ${usuarios.length?rows(usuarios,d=>d.usuario,u=>`<span style="font-size:13px">${u}</span>`):
-        '<div style="font-size:13px;color:#9B8AB4;padding:6px 0">—</div>'}
+      ${usuarios.length?usuarios.map(u=>{
+        const n=dh.filter(d=>d.usuario===u).length;
+        const p=t>0?Math.round(n/t*100):0;
+        return`<div class="rep-row">
+          <span>${u}</span>
+          <div class="bar-w"><div class="bar-f" style="width:${p}%"></div></div>
+          <span class="rep-val">${n}</span>
+        </div>`;
+      }).join(''):'<div style="font-size:13px;color:#9B8AB4;padding:6px 0">—</div>'}
     </div>`;
 }
 
+/* EXPORTAR */
 function exportar(){
   const dh=dHoje();const t=dh.length;
   const mn=dh.filter(d=>periodo(d.horario)==='manhã').length;
   let txt=`RELATÓRIO DE PRESENÇA — CASA DA FAMÍLIA BC\nData: ${hojeFormatado()}\n${'='.repeat(44)}\n\n`;
   txt+=`TOTAL GERAL: ${t} pessoa(s)\nManhã (7h–13h): ${mn}  |  Tarde (13h–18h): ${t-mn}\n\n`;
   txt+=`TIPOS DE ATENDIMENTO\n`;
-  ['aula_livre','abraco','protecao','global','ludoterapia','sala'].forEach(tp=>
-    txt+=`  ${tipoLabel(tp)}: ${dh.filter(d=>d.tipo===tp).length}\n`
-  );
+  [...TIPOS_FIXOS.map(t=>t.v),...tiposCustom.map(c=>'custom_'+c.replace(/\s+/g,'_').toLowerCase())].filter(tp=>dh.some(d=>d.tipo===tp)).forEach(tp=>{
+    const n=dh.filter(d=>d.tipo===tp).length;
+    txt+=`  ${tipoLabel(tp)}: ${n}\n`;
+    if(tp==='sala'){
+      const contAulas={};
+      dh.filter(d=>d.tipo==='sala'&&d.tipoAula).forEach(d=>{
+        const k=d.tipoAula.trim();contAulas[k]=(contAulas[k]||0)+1;
+      });
+      Object.entries(contAulas).sort((a,b)=>b[1]-a[1]).forEach(([nome,qtd])=>{
+        txt+=`    • ${nome}: ${qtd} pessoa${qtd>1?'s':''}\n`;
+      });
+    }
+  });
   txt+=`\nPOR RECEPCIONISTA\n`;
   [...new Set(dh.map(d=>d.usuario))].forEach(u=>
     txt+=`  ${u}: ${dh.filter(d=>d.usuario===u).length}\n`
   );
   txt+=`\nLISTA COMPLETA\n`;
-  dh.sort((a,b)=>a.horario.localeCompare(b.horario)).forEach(d=>
-    txt+=`  ${d.horario} | ${d.nome} | CPF: ${d.cpf} | Tel: ${d.tel} | ${tipoLabel(d.tipo)} | ${d.usuario}\n`
-  );
+  dh.sort((a,b)=>a.horario.localeCompare(b.horario)).forEach(d=>{
+    const aula=d.tipoAula?` [${d.tipoAula}]`:'';
+    txt+=`  ${d.horario} | ${d.nome} | CPF: ${d.cpf} | Tel: ${d.tel} | ${tipoLabel(d.tipo)}${aula} | ${d.usuario}\n`;
+  });
   const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));
+  a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
   a.download=`relatorio_casafamilia_${hoje()}.txt`;a.click();
   toast('Relatório exportado!');
 }
 
-function render(){
-  renderMetricas();
-  renderLista();
-  renderRelatorio();
-}
+function render(){renderMetricas();renderLista();renderRelatorio()}
 
 function showPage(p,btn){
   document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
@@ -468,4 +755,8 @@ function showPage(p,btn){
   btn.classList.add('active');
   render();
 }
+
+setHora();
 </script>
+</body>
+</html>
